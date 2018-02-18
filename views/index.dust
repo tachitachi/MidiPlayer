@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{title}</title>
+    <script type='text/javascript' data-main='/javascripts/index' src='/javascripts/lib/require.js'></script>
+</head>
+<body>
+	<style type="text/css">
+		body {
+			font-family: "Roboto Mono", monospace;
+			text-align: center;
+			margin: 0px;
+		}
+		#Topbar {
+			width: calc(100% - 6px);
+			height: 35px;
+			background-color: black;
+			position: absolute;
+			left: 3px;
+			top: 3px;
+		}
+		#Topbar #TonejsLogo{
+			margin-top: 3px;
+		}
+		#FileDrop{
+			position: absolute;
+			width: 500px;
+			height: 200px;
+			margin-left: -250px;
+			border: 2px dashed black;
+			left: 50%;
+			margin-top: 70px;
+			color: black;
+		}
+		#FileDrop.Hover{
+			background-color: black;
+			color: white;
+		}
+		#FileDrop input {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			left: 0px;
+			top: 0px;
+		}
+		#FileDrop #Text {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			line-height: 200px;
+			left: 0px;
+			top: 0px;
+			text-align: center;
+		}
+		textarea {
+			font-family: "Roboto Mono" monospace;
+			height: 300px;
+			width: 100%;
+			display: inline-block;
+			position: relative;
+			float: left;
+		}
+		#Results {
+			position: absolute;
+			width: 500px;
+			margin-left: -250px;
+			top: 300px;
+			left: 50%;
+			position: absolute;
+		}
+		#Controls {
+			position: absolute;
+			width: 500px;
+			margin-left: -250px;
+			top: 630px;
+			left: 50%;
+			position: absolute;
+		}
+		#Description {
+			position: absolute;
+			width: 100%;
+			height: 40px;
+			font-size: 20px;
+			bottom: 0px;
+		}
+		#Settings {
+			background-color: black;
+			left: 20px;
+			top: 70px;
+			width: 125px;
+			height: auto;
+			padding-bottom: 10px;
+			position: absolute;
+		}
+		#Settings span {
+			width: 60px;
+			float: left;
+			color: white;
+			font-size: 12px;
+			text-align: left;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		#Settings input {
+			width: 30px;
+			float: left;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+	</style>
+	<div id="Topbar"></div>
+	<div id="FileDrop">
+		<div id="Text">
+			Drop a midi file here
+		</div>
+		<input type="file" accept="audio/midi">
+	</div>
+	<div id="Results">
+		<textarea id="ResultsText"></textarea>
+	</div>
+
+	<div id="Description">Parse a MIDI file into a Tone.js-friendly JSON format.</div>
+
+	<div id="Controls">
+		<input type="button" id="triangleButton" value="Triangle">
+		<input type="button" id="sawtoothButton" value="Sawtooth">
+		<input type="button" id="squareButton" value="Square">
+		<input type="button" id="sineButton" value="Sine">
+	</div>
+
+</body>
+</html>
