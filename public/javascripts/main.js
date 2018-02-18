@@ -3,6 +3,7 @@
 define(function(require){
 
 	var $ = require('jquery');
+	var jqueryui = require('jqueryui');
 	var Tone = require('Tone');
 	var MidiConvert = require('MidiConvert');
 
@@ -68,6 +69,11 @@ define(function(require){
 					var all_notes = [];
 
 					for(var i = 0; i < midi.tracks.length; i++){
+						var track = midi.tracks[i];
+
+						if(track.isPercussion){
+							continue;
+						}
 						all_notes.push(...midi.tracks[i].notes);
 
 					}
@@ -121,6 +127,87 @@ define(function(require){
 					},
 				});
 			});
+
+
+			var attackDefault = 0.005;
+			var decayDefault = 0.1;
+			var sustainDefault = 0.3;
+			var releaseDefault = 1;
+
+			var attack = attackDefault;
+			var decay = decayDefault;
+			var sustain = sustainDefault;
+			var release = releaseDefault;
+
+
+			function setEnvelope(){
+				synth.set({
+					envelope: {
+						attack: attack,
+						decay: decay,
+						sustain: sustain,
+						release: release,
+					}
+				});
+			}
+
+			var attackSlider = $("#attackSlider").slider({
+				value: attack,
+				min: 0.001,
+				max: 5,
+				step: 0.001,
+				change: function(event, ui){
+					$('.valueLabel', $(event.target).parent()).text(ui.value);
+					attack = ui.value;
+					setEnvelope();
+				}
+			});
+
+			var decaySlider = $("#decaySlider").slider({
+				value: decay,
+				min: 0.001,
+				max: 5,
+				step: 0.001,
+				change: function(event, ui){
+					$('.valueLabel', $(event.target).parent()).text(ui.value);
+					decay = ui.value;
+					setEnvelope();
+				}
+			});
+
+			var sustainSlider = $("#sustainSlider").slider({
+				value: sustain,
+				min: 0.001,
+				max: 1,
+				step: 0.001,
+				change: function(event, ui){
+					$('.valueLabel', $(event.target).parent()).text(ui.value);
+					sustain = ui.value;
+					setEnvelope();
+				}
+			});
+
+			var releaseSlider = $("#releaseSlider").slider({
+				value: release,
+				min: 0.001,
+				max: 5,
+				step: 0.001,
+				change: function(event, ui){
+					$('.valueLabel', $(event.target).parent()).text(ui.value);
+					release = ui.value;
+					setEnvelope();
+				}
+			});
+
+
+			var resetButton = $("#resetButton").click(function(){
+				console.log('resetting');
+				attackSlider.slider("value", attackDefault);
+				decaySlider.slider("value", decayDefault);
+				sustainSlider.slider("value", sustainDefault);
+				releaseSlider.slider("value", releaseDefault);
+				setEnvelope();
+			})
 
 
 		} // end constructor
