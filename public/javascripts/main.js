@@ -11,7 +11,7 @@ define(function(require){
 		constructor(){
 
 			this.tone = Tone;
-			var synth = new Tone.PolySynth(9, Tone.Synth).toMaster();
+			var synth = new Tone.PolySynth(9, Tone.MonoSynth).toMaster();
 
 			synth.set({
 				//"oscillator" : {
@@ -20,9 +20,9 @@ define(function(require){
 				//    modulationIndex : 3,
 				//    harmonicity: 3.4
 				//},
-				//"filter" : {
-				//	"type" : "highpass"
-				//},
+				"filter" : {
+					"type" : "allpass"
+				},
 			})
 
 			if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -58,7 +58,7 @@ define(function(require){
 				reader.onload = function(e){
 					
 					var partsData = MidiConvert.parse(e.target.result);
-					document.querySelector("#ResultsText").value = JSON.stringify(partsData, undefined, 2);
+					//document.querySelector("#ResultsText").value = JSON.stringify(partsData, undefined, 2);
 
 					var midi = partsData;
 
@@ -98,7 +98,7 @@ define(function(require){
 			$("#triangleButton").click(function(){
 				synth.set({
 					oscillator : {
-						type : 'triangle',
+						type : 'triangle16',
 					},
 				});
 			});
@@ -143,6 +143,12 @@ define(function(require){
 			function setEnvelope(){
 				synth.set({
 					envelope: {
+						attack: attack,
+						decay: decay,
+						sustain: sustain,
+						release: release,
+					},
+					filterEnvelope: {
 						attack: attack,
 						decay: decay,
 						sustain: sustain,
