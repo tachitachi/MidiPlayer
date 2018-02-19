@@ -22,7 +22,10 @@
 
 	<div id="Description">Parse a MIDI file into a Tone.js-friendly JSON format.</div>
 
+	<audio controls></audio>
+
 	<div id="Controls">
+		<button>Start Recording</button>
 		<input type="button" id="triangleButton" value="Triangle">
 		<input type="button" id="sawtoothButton" value="Sawtooth">
 		<input type="button" id="squareButton" value="Square">
@@ -45,6 +48,11 @@
 
 		<div class="sliderSection">
 			<div id="releaseSlider" class="controlSlider"></div>
+			<div class="valueLabel">1</div>
+		</div>
+
+		<div class="sliderSection">
+			<div id="partialSlider" class="controlSlider"></div>
 			<div class="valueLabel">1</div>
 		</div>
 
