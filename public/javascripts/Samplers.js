@@ -361,6 +361,21 @@ define(function(require){
 		"D3",
 		"A3",
 		"E3",
+		"C1",
+		"B1",
+		"D1",
+		"A1",
+		"E1",
+		"C5",
+		"B5",
+		"D5",
+		"A5",
+		"E7",
+		"C7",
+		"B7",
+		"D7",
+		"A7",
+		"E7",
 
 	];
 
@@ -378,9 +393,9 @@ define(function(require){
 			var note = short_notes[i];
 
 
-			if(note.indexOf('3') < 0){
-				continue;
-			}
+			//if(note.indexOf('3') < 0 || note.indexOf('2') < 0){
+			//	continue;
+			//}
 
 
 			var url = 'http://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/{0}-mp3/{1}.mp3'.format(name, note);
