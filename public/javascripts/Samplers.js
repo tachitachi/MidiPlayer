@@ -403,10 +403,21 @@ define(function(require){
 			data[note] = url;
 		}
 
+		var reverb = new Tone.Freeverb({
+			"roomSize" : 0.9,
+			"wet" : 0.2
+		});
 
 		var s = new Tone.Sampler(data, {
 			'onload': onLoad
-		}).toMaster();
+		}).chain(Tone.Master);
+
+		s.set({
+			attack: 0.01,
+			decay: 0.3,
+			sustain: 0.3,
+			release: 0.1,
+		})
 
 
 		return {'result': true, 'instrument': s};

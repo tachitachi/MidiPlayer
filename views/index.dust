@@ -4,6 +4,7 @@
 	<title>{title}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/jquery-ui.min.css' />
+    <!--<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/tone/0.9.0/Tone.min.js'></script>-->
     <script type='text/javascript' data-main='/javascripts/index' src='/javascripts/lib/require.js'></script>
 </head>
 <body>
@@ -22,10 +23,10 @@
 
 	<div id="Description">Parse a MIDI file into a Tone.js-friendly JSON format.</div>
 
-	<audio controls></audio>
+	<div id="Content"></div>
 
 	<div id="Controls">
-		<button>Start Recording</button>
+		<input type="button" id="startButton" value="Start Zelda">
 		<input type="button" id="triangleButton" value="Triangle">
 		<input type="button" id="sawtoothButton" value="Sawtooth">
 		<input type="button" id="squareButton" value="Square">
