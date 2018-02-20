@@ -44,9 +44,9 @@ define(function(require){
 
 
 			//var synth = new Tone.PolySynth(9, Tone.MonoSynth).fan(waveform1).toMaster();
-			var synth = new Tone.PolySynth(32, Tone.Synth).fan(waveform1).chain(Tone.Master);
+			var synth = new Tone.PolySynth(8, Tone.Synth).fan(waveform1).chain(Tone.Master);
 			//var synth = new Tone.Synth().fan(waveform1).chain(Tone.Master);
-			var synth2 = new Tone.PolySynth(32, Tone.Synth).fan(waveform1).toMaster();
+			var synth2 = new Tone.PolySynth(4, Tone.Synth).fan(waveform1).toMaster();
 
 
 			//var noiseSynth = new Tone.PolySynth(32, Tone.NoiseSynth).fan(waveform2).toMaster();
@@ -74,6 +74,7 @@ define(function(require){
 
 			synth.disconnect();
 			synth2.disconnect();
+			membraneSynth.disconnect();
 
 			//for(var key in MIDI.Soundfont){
 			//	samplers[key] = new Tone.Sampler(MIDI.Soundfont[key]).toMaster();
@@ -234,7 +235,7 @@ define(function(require){
 
 						}
 					}
-					else if(false){
+					else if(true){
 
 						var vocal_notes = [];
 						var all_notes = [];
@@ -270,13 +271,13 @@ define(function(require){
 							//use the events to play the synth
 							self.synth.triggerAttackRelease(note.name, note.duration, time, note.velocity)
 	
-						}, all_notes).start();
+						}, all_notes);
 	
 						var midiPart2 = new Tone.Part(function(time, note) {
 							//use the events to play the synth
 							synth2.triggerAttackRelease(note.name, note.duration, time, note.velocity)
 	
-						}, vocal_notes).start();
+						}, vocal_notes);
 
 						var midiPart3 = new Tone.Part(function(time, note) {
 							//use the events to play the synth
@@ -290,7 +291,15 @@ define(function(require){
 							//noiseSynth.triggerAttack(note.name);//context.currentTime
 							//noiseSynth.triggerRelease("+1n"); //a quarter-note from now
 	
-						}, percussive_notes).start();
+						}, percussive_notes);
+
+						midiPart.start(0);
+						midiPart2.start(0);
+						midiPart3.start(0);
+
+						self.synth.fan(waveform1).toMaster();
+						synth2.fan(waveform2).toMaster();
+						membraneSynth.fan(waveform3).toMaster();
 
 						Tone.Transport.start('+0.1');
 
