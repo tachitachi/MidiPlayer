@@ -2,7 +2,7 @@ requirejs.config({
     baseUrl: '/javascripts',
     paths: {
         main: 'main',
-        Tone: 'lib/Tone.min',
+        Tone: 'lib/Tone',
         jquery: 'lib/jquery-3.3.1.min',
         jqueryui: 'lib/jquery-ui.min',
 		//underscore: 'lib/underscore-min',
