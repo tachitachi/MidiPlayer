@@ -67,14 +67,6 @@ textarea {
 	position: absolute;
 }
 
-#Results {
-	position: absolute;
-	width: 500px;
-	margin-left: -250px;
-	top: 700px;
-	left: 50%;
-	position: absolute;
-}
 #Description {
 	position: absolute;
 	width: 100%;
@@ -112,7 +104,7 @@ textarea {
 	position: absolute;
 	width: 650px;
 	margin-left: -315px;
-	top: 1030px;
+	top: 730px;
 	left: 50%;
 	position: absolute;
 }

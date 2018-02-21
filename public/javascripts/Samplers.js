@@ -410,7 +410,7 @@ define(function(require){
 
 		var s = new Tone.Sampler(data, {
 			'onload': onLoad
-		}).chain(Tone.Master);
+		});
 
 		s.set({
 			attack: 0.01,

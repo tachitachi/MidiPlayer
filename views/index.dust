@@ -17,9 +17,6 @@
 		</div>
 		<input type="file" accept="audio/midi">
 	</div>
-	<div id="Results">
-		<textarea id="ResultsText"></textarea>
-	</div>
 
 	<div id="Description">Parse a MIDI file into a Tone.js-friendly JSON format.</div>
 
